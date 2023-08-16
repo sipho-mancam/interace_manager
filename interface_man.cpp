@@ -14,17 +14,17 @@ std::queue<T>* Interface_Manager::getQRef(bool out)
     
     if(type ==  decklink_in)
     {       
-        return decklink_in_q;
+        return &decklink_in_q;
     }
     if( type==decklink_out)
     {
-        return decklink_out_q;
+        return &decklink_out_q;
     } 
     if(type==ndi_type)
     {
         if(out)
-            return ndi_out_q;
-        return ndi_in_q;
+            return &ndi_out_q;
+        return &ndi_in_q;
     }
     
     return nullptr;

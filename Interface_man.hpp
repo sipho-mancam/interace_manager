@@ -7,7 +7,6 @@ class IDeckLinkVideoFrame{};
 class IDeckLinkInputVideoFrame{};
 class NDIlib_video_frame_v2_t{};
 
-
 class Interface_Manager{
 private:
     std::queue<IDeckLinkVideoFrame*> decklink_out_q;
@@ -30,9 +29,11 @@ private:
 
 public:
     Interface_Manager();
-
+    ~Interface_Manager(); // the manager will only close when all streams are clear...~Interface_Manager();
+     // the manager will only close when all streams are clear...
+     bool isRunning(){return exit_flag;}
+     
     template <typename T>
     std::queue<T> * getQRef(bool out=true); // the bool detects for ndi_queues
-
-    ~Interface_Manager(); // the manager will only close when all streams are clear...
+    
 };
